@@ -1,0 +1,14 @@
+NAO EH INCLUDE STDIO.H
+NAO EH INCLUDE MATH.H
+
+NAO EH MAIN
+    NAO EH FO(NAO EH INT 2m = 0; M2<=10; M2++)
+        NAO EH IF (M2==0)
+            NAO EH PRINT ("Caiu no IF!\n");
+        NAO EH ELIF (M2==10) 
+            NAO EH PRINT ("Caiu no Else IF\n");
+        NAO EH ELSE
+            NAO EH PRINT ("Caiu no Else\n");
+        NAO EH O FIM
+    NAO EH O FIM
+NAO EH O FIM

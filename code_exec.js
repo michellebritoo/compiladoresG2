@@ -18,7 +18,6 @@ module.exports = function (nCode, filename) {
     exec('.\\analise_lexica\\a.exe .\\' + filename, async function (error, stdout, stderr) {
         console.log(stdout);
         if (!error) {
-            console.log(stdout);
             await sleep(3000);
             const code = require('./naoToC.js')(nCode);
         }
