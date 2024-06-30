@@ -7,23 +7,21 @@ function randomValueHex(len) {
 };
 
 
-module.exports = function (bCode, filename) {
-    const fs = require('fs');
-    const comp = require('./compiler.js');
-    const code = require('./naoToC.js')(bCode);
+module.exports = function (nCode, filename) {
+    const exec = require('child_process').exec;
 
-    var rName = randomValueHex(15).toString();
+    function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
 
-
-    fs.writeFile(rName + ".c", code, function (err) {
-        // se ocorrer erro, retorna JSON 
-        if (err) {
-            console.log("erro interno");
-            return;
+    console.log("INICIANDO ANALISE LEXICA \n");
+    exec('.\\analise_lexica\\a.exe .\\' + filename, async function (error, stdout, stderr) {
+        console.log(stdout);
+        if (!error) {
+            console.log(stdout);
+            await sleep(3000);
+            const code = require('./naoToC.js')(nCode);
         }
-        // caso contrário, compila e executa
-        process.nextTick(function () {
-            comp(rName, filename);
-        });
-    });
+    })
+
 };

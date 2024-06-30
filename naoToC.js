@@ -7,10 +7,8 @@ module.exports = function (naoCode) {
 
     code = code.replace(/(NAO EH INCLUDE STDIO\.H)(?=(?:[^"]|"[^"]*")*$)/g, '#include <stdio.h>');
     code = code.replace(/(NAO EH INCLUDE MATH\.H)(?=(?:[^"]|"[^"]*")*$)/g, '#include <math.h>');
-
     //Traduzindo a MAIN
     code = code.replace(/(NAO EH MAIN)(?=(?:[^"]|"[^"]*")*$)/g, 'int main (void) {');
-
     //Traduzindo o }
     code = code.replace(/(NAO EH O FIM)(?=(?:[^"]|"[^"]*")*$)/g, '}');
 
@@ -29,19 +27,6 @@ module.exports = function (naoCode) {
     code = code.replace(/(NAO EH WHILE)(?=(?:[^"]|"[^"]*")*$)(.*)/g, 'while $2 {');
     //Traduzindo for
     code = code.replace(/(NAO EH FOR)(?=(?:[^"]|"[^"]*")*$)(.*)/g, 'for $2 {');
-
-    // //Traduzindo declaração de função
-    // code = code.replace(/(O[H]? O HOM[EI][M]? A[IÍ] PO[ \t]*\()(?=(?:[^"]|"[^"]*")*$)(.*)(\))/g, '$2 {');
-    // //Traduzindo retorno da função
-    // code = code.replace(/(BORA CUMPAD[EI])(?=(?:[^"]|"[^"]*")*$)/g, 'return');
-    // //Traduzindo chamada de função
-    // code = code.replace(/(AJUDA O MALUCO TA DOENTE)(?=(?:[^"]|"[^"]*")*$)/g, ' ');
-    // code = code.replace(/(AJUDA O MALUCO QUE TA DOENTE)(?=(?:[^"]|"[^"]*")*$)/g, ' ');
-    // //Traduzindo parada no código
-    // code = code.replace(/(SAI FILH[OA] DA PUTA)(?=(?:[^"]|"[^"]*")*$)/g, 'break');
-    // //Traduzindo continuar o código
-    // code = code.replace(/(VAMO MONSTRO)(?=(?:[^"]|"[^"]*")*$)/g, 'continue');
-
     //Traduzindo os tipos de dados
     code = code.replace(/(NAO EH CHAR)(?=(?:[^"]|"[^"]*")*$)/g, 'char');
     code = code.replace(/(NAO EH INT)(?=(?:[^"]|"[^"]*")*$)/g, 'int');
