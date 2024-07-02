@@ -19,7 +19,12 @@ module.exports = function (nCode, filename) {
         console.log(stdout);
         if (!error) {
             await sleep(3000);
-            const code = require('./naoToC.js')(nCode);
+            exec('.\\analise_sintatica\\a.exe .\\' + filename, async function (error, stdout, stderr) {
+                console.log(stdout);
+                if (!error) {
+                    const code = require('./naoToC.js')(nCode);
+                }
+            })
         }
     })
 

@@ -85,6 +85,9 @@ int lineno = 1;
 #define CHAR_CONST 73
 #define SIGNED_CONST 74
 #define STRING_CONST 75
+
+#define ELIF 76
+
 %}
 
 alpha [A-Za-z]
@@ -119,6 +122,7 @@ string \"(.^([%d]|[%f]|[%s]|[%c]))\"
 "NAO EH FOR" return FOR;
 "NAO EH GOTO" return GOTO;
 "NAO EH IF" return IF;
+"NAO EH ELIF" return ELIF;
 "NAO EH INT" return INT;
 "NAO EH LONG" return LONG;
 "NAO EH RETURN" return RETURN;
@@ -171,7 +175,7 @@ string \"(.^([%d]|[%f]|[%s]|[%c]))\"
 "(" return OBO;
 ")" return OBC;
 "{" return CBO;
-"NAO EH O FIM" return CBC;
+"}" return CBC;
 "#" return HASH;
 
 {alpha}({alpha}|{digit}|{und})*\[{digit}*\] return ARR;
@@ -312,7 +316,7 @@ int main(int argc, char **argv)
 			}
 			dq=0;
 		}
-		if((scan>=1 && scan<=32) && mlc==0)
+		if((scan>=1 && scan<=32) || (scan = 76)  && mlc==0)
 		{
 			printf("%s\t\t\tKEYWORD\t\t\t\tLine %d\n", yytext, lineno);
 			insertToHash(yytext, "KEYWORD");

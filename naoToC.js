@@ -8,25 +8,24 @@ module.exports = function (naoCode) {
     code = code.replace(/(NAO EH INCLUDE STDIO\.H)(?=(?:[^"]|"[^"]*")*$)/g, '#include <stdio.h>');
     code = code.replace(/(NAO EH INCLUDE MATH\.H)(?=(?:[^"]|"[^"]*")*$)/g, '#include <math.h>');
     //Traduzindo a MAIN
-    code = code.replace(/(NAO EH MAIN)(?=(?:[^"]|"[^"]*")*$)/g, 'int main (void) {');
-    //Traduzindo o }
-    code = code.replace(/(NAO EH O FIM)(?=(?:[^"]|"[^"]*")*$)/g, '}');
+    code = code.replace(/(NAO EH MAIN)(?=(?:[^"]|"[^"]*")*$)/g, 'int main (void)');
+
 
     //Traduzindo printf
-    code = code.replace(/(NAO EH PRINT)(?=(?:[^"]|"[^"]*")*$)/g, 'printf');
+    code = code.replace(/(NAO EH PRINTF)(?=(?:[^"]|"[^"]*")*$)/g, 'printf');
     //Traduzindo scanf
-    code = code.replace(/(NAO EH SCAN)(?=(?:[^"]|"[^"]*")*$)/g, 'scanf');
+    code = code.replace(/(NAO EH SCANF)(?=(?:[^"]|"[^"]*")*$)/g, 'scanf');
 
     //Traduzindo if
-    code = code.replace(/(NAO EH IF)(?=(?:[^"]|"[^"]*")*$)(.*)/g, 'if $2 {');
+    code = code.replace(/(NAO EH IF)(?=(?:[^"]|"[^"]*")*$)(.*)({)/g, 'if $2 {');
     //Traduzindo else
-    code = code.replace(/(NAO EH ELSE)(?=(?:[^"]|"[^"]*")*$)/g, '} else {');
+    code = code.replace(/(NAO EH ELSE)(?=(?:[^"]|"[^"]*")*$)/g, 'else');
     //Traduzindo else if
-    code = code.replace(/(NAO EH ELIF]?)(?=(?:[^"]|"[^"]*")*$)(.*)/g, '} else if $2 {');
+    code = code.replace(/(NAO EH ELIF]?)(?=(?:[^"]|"[^"]*")*$)(.*)({)/g, 'else if $2 {');
     //Traduzindo while
-    code = code.replace(/(NAO EH WHILE)(?=(?:[^"]|"[^"]*")*$)(.*)/g, 'while $2 {');
+    code = code.replace(/(NAO EH WHILE)(?=(?:[^"]|"[^"]*")*$)(.*)({)/g, 'while $2 {');
     //Traduzindo for
-    code = code.replace(/(NAO EH FOR)(?=(?:[^"]|"[^"]*")*$)(.*)/g, 'for $2 {');
+    code = code.replace(/(NAO EH FOR)(?=(?:[^"]|"[^"]*")*$)(.*)({)/g, 'for $2 {');
     //Traduzindo os tipos de dados
     code = code.replace(/(NAO EH CHAR)(?=(?:[^"]|"[^"]*")*$)/g, 'char');
     code = code.replace(/(NAO EH INT)(?=(?:[^"]|"[^"]*")*$)/g, 'int');
