@@ -2223,7 +2223,7 @@ int main(int argc, char **argv)
 			}
 			dq=0;
 		}
-		if((scan>=1 && scan<=32) || (scan = 76)  && mlc==0)
+		if(((scan>=1 && scan<=32) || (scan == 76))  && mlc==0)
 		{
 			printf("%s\t\t\tKEYWORD\t\t\t\tLine %d\n", yytext, lineno);
 			insertToHash(yytext, "KEYWORD");
@@ -2339,7 +2339,8 @@ int main(int argc, char **argv)
 	}
 
 	printf("\n");
-	printf("Erros encontrados: %d \n",errorCounter);
+	printf("Erros encontrados na análise léxica: %d \n",errorCounter);
+	printf("\n--------------------------------------- \n");
 	if(errorCounter>0){
 		return 1;
 	}

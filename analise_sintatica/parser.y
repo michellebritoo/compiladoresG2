@@ -334,11 +334,15 @@ expression_statement
 	;
 
 selection_statement
-	: IF '(' expression ')' statement    %prec NO_ELSE
-	| IF '(' expression ')' statement ELSE statement
-	| IF '(' expression ')' statement ELIF '(' expression ')'    %prec NO_ELSE
-	| IF '(' expression ')' statement ELIF '(' expression ')' ELSE statement
-	;
+    : IF '(' expression ')' statement %prec NO_ELSE
+    | IF '(' expression ')' statement else_clause
+    ;
+
+else_clause
+    : ELIF '(' expression ')' statement %prec NO_ELSE
+	| ELSE statement
+    | ELIF '(' expression ')' statement else_clause
+    ;
 
 iteration_statement
 	: WHILE '(' expression ')' statement
@@ -375,8 +379,10 @@ int main(int argc, char *argv[])
 	yyin = fopen(argv[1], "r");
 	if(!yyparse())
 		printf("\nParsing complete\n");
-	else
+	else{
 		printf("\nParsing failed\n");
+		return 1;
+	}
 
 	fclose(yyin);
 	display();
@@ -386,6 +392,6 @@ int main(int argc, char *argv[])
 //extern int lineno;
 extern char *yytext;
 yyerror(char *s) {
-	printf("\nLine %d : %s\n", (yylineno), s);
+	printf("\nLine %d : %s\n", (yylineno+1), s);
 	return 1;
 }         

@@ -162,7 +162,6 @@ void disp()
 	{
 		printf("%s\t\t\t", ctable[i].num);
 		printf("%s\t\t\t\n", ctable[i].type);
-		//printf("\t%d\t\n", ctable[i].lno);
 	}
 	printf("\n\n");
 }
