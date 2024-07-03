@@ -1,0 +1,21 @@
+NAO EH MAIN {
+    NAO EH INT teste1 = 1;
+    NAO EH INT teste2 = 1;
+    NAO EH INT teste3 = 3;
+    NAO EH INT i;
+    NAO EH FOR (i = 0; i<=10; i++){
+        NAO EH IF (i==2) {
+            NAO EH PRINTF ("caiu no primeiro if de i=%d\n",i);
+        }
+        NAO EH ELIF (i==5) {
+            NAO EH PRINTF ("caiu no segundo if valor de i=%d\n",i);
+        } 
+        NAO EH ELIF (i==7) {
+            NAO EH PRINTF ("caiu no terceiro if valor de i=%d\n",i);
+        }
+        NAO EH ELSE {
+            NAO EH PRINTF ("valor de i=%d\n",i);
+            NAO EH PRINTF ("%d",teste1+teste2);
+        } 
+    }
+}
